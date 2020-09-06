@@ -14,7 +14,7 @@ if firmware.is_file():
 	print("File exists.")
 else:
 	print("Firmware not found, downloading it from DD-WRT servers...")
-	urllib.request.urlretrieve("http://download1.dd-wrt.com/dd-wrtv2/downloads/betas/2017/02-07-2017-r31277/tplink_tl-wr841ndv8/factory-to-ddwrt.bin", "factory-to-ddwrt.bin")
+	urllib.request.urlretrieve("https://download1.dd-wrt.com/dd-wrtv2/downloads/betas/2019/08-06-2019-r40559/tplink_tl-wr841ndv8/factory-to-ddwrt.bin", "factory-to-ddwrt.bin")
 	print("Success: download.")
 #open firmware bin file to edit
 f = open('factory-to-ddwrt.bin', 'a+')
@@ -29,7 +29,7 @@ time.sleep(0.5)
 #replaces the special checksum; if you want to recalculate the special checksum again, compile mktplinkfw.c from https://github.com/jtreml/firmware-mod-kit/tree/master/src/firmware-tools
 #then, run $mktplinkfw -i [FILENAME]
 #NOTE: mktplinkfw.c requires md5.h and md5.c, also found in the same repo linked above
-m[0x4C:0x5C] = b'\x13\xBC\x40\x88\x28\x2F\x0F\x21\x68\x78\x61\x98\x54\xF3\x17\x7F'
+m[0x4C:0x5C] = b'\xd2\xBA\xFA\xDF\x10\x11\x33\xED\xC5\xFB\x81\x1C\x51\x07\x3A\xBB'
 print("Success: checksum fix")
 time.sleep(0.2)
 print("Try uploading now.")
